@@ -1,0 +1,45 @@
+.Content {
+  background: #F4F4F4;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0.6rem;
+}
+
+.header-container {
+  padding-left: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.header-container a span {
+  font-size: 0.8rem;
+}
+
+.header-container .link-trace {
+  color: #7A99F4;
+}
+
+.link-trace a {
+  color: #7A99F4;
+}
+
+.header-container h2 {
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.contents-container {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-contents {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 1.5rem;
+  align-items: center;
+}

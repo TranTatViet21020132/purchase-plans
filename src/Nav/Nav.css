@@ -1,0 +1,108 @@
+.Nav {
+  height: 1.2rem;
+  width: fit-content;
+  background: black;
+  display: flex;
+  padding: 0.6rem 0.8rem;
+  float: left;
+  position: relative;
+}
+
+.logo-containter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding-right: 0.8rem;
+  border-right: 2px solid grey;
+}
+
+.logo-containter a {
+  text-decoration: none;
+  color: #D5D5D5;
+}
+
+.logo-containter a span {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.logo-containter a:visited {
+  color: #D5D5D5;
+}
+
+.nav-icon {
+  color: #D5D5D5;
+}
+
+.nav-contents {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 0 0.8rem;
+  width: 100%;
+  gap: 5.4rem;
+}
+
+.categories-container {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.category {
+  padding: 0 0.8rem;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+  max-width: 8rem;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  background-color: #1160FF;
+  height: 2px;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.category span {
+  color: #D5D5D5;
+  font-size: 0.75rem;
+  display: flex;
+}
+
+.utilities-container {
+  list-style-type: none;
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: grey;
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+.avatar span {
+  font-size: 0.64rem;
+  color: #D5D5D5;
+}
