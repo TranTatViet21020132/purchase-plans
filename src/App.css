@@ -4,5 +4,5 @@
   background: #E7E7E7;
   flex-direction: column;
   box-shadow: 0 0 1px grey;
-  padding: 0.4rem;
+  width: 100vw;
 }

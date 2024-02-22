@@ -117,7 +117,7 @@ const Lists = () => {
     <div className="Lists">
       <div className="child-header-container">
         <h3>Danh sách phương án mua</h3>
-        <span>Danh sách các Phương án mua &lt;PAM&gt; 
+        <span>Danh sách các Phương án mua PAM
           được tạo ra trên hệ thống mà người dùng được phân quyền truy xuất</span>
       </div>
       <div className="options-container">

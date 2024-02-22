@@ -34,7 +34,7 @@ const Items = () => {
     <div className="Items">
       <div className="child-header-container">
         <h3>Hàng hóa cần mua</h3>
-        <span>Lựa chọn hàng hóa dang co nhu cau de mua tap trung</span>
+        <span>Lựa chọn hàng hóa đang có nhu cầu để mua tập trung</span>
       </div>
       <div className='search-container'>
         <span className="search-icon-container">
