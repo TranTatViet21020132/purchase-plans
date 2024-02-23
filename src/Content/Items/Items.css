@@ -4,6 +4,12 @@
   background: white;
 }
 
+@media (max-width: 576px) {
+  .Items {
+    width: 98%;
+  }
+}
+
 .child-header-container {
   display: flex;
   flex-direction: column;

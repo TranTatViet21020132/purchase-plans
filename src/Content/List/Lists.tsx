@@ -1,4 +1,5 @@
 import './Lists.css';
+import { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { BsChevronDown, BsChevronUp, BsThreeDotsVertical } from 'react-icons/bs';
 import { FiSearch, FiXCircle } from "react-icons/fi";
@@ -21,7 +22,7 @@ type List = {
 }
 
 const Lists = () => {
-  const items: List[] = [
+  const fetchList: List[] = [
     {
       code: "SE.2023.0000010",
       name: "Sự kiện chào giá cá hồi Nauy",
@@ -90,6 +91,27 @@ const Lists = () => {
     },
   ];
 
+  const [lists, setLists] = useState<List[]>([]);
+  const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
+
+  useEffect(() => {
+    setLists(fetchList);
+    
+    const updateMaxUnitLength = () => {
+      if (window.innerWidth <= 1024) {
+        setMaxUnitLength(16);
+      } else {
+        setMaxUnitLength(Infinity);
+      }
+    };
+
+    updateMaxUnitLength();
+
+    window.addEventListener('resize', updateMaxUnitLength);
+
+    return () => window.removeEventListener('resize', updateMaxUnitLength);
+  }, []);
+
   const getStatus = (status: string) => {
     switch (status) {
       case "Mới tạo":
@@ -156,10 +178,12 @@ const Lists = () => {
               <th className='l-col head'>Trạng thái</th>
               <th className='l-col head'></th>
             </tr>
-            {items.map((item, index) => (
+            {lists.map((item, index) => (
               <tr key={index}>
                 <td className='l-col data first'>{item.code}</td>
-                <td className='l-col data'>{item.name}</td>
+                <td className='l-col data'>
+                  {item.name.length > maxUnitLength ? item.name.slice(0, maxUnitLength) + '...' : item.name}
+                </td>
                 <td className='l-col data'>{item.creator}</td>
                 <td className='l-col data'>{item.create_date}</td>
                 <td className='l-col data'>{item.type}</td>

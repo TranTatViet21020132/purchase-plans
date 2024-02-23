@@ -5,4 +5,7 @@
   flex-direction: column;
   box-shadow: 0 0 1px grey;
   width: 100vw;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
 }

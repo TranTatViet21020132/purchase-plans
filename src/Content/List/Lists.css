@@ -1,6 +1,6 @@
 .Lists {
   background: white;
-  width: inherit;
+  width: 100%;
   margin-top: 1rem;
 }
 
@@ -95,4 +95,10 @@
 .l-col.data.first {
   color: #4c9aff;
   cursor: pointer;
+}
+
+@media (max-width: 890px) {
+  .child-header-container {
+    margin-bottom: 0.4rem;
+  }
 }

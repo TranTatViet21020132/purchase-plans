@@ -4,6 +4,12 @@
   margin-left: 0.2rem;
 }
 
+@media (max-width: 576px) {
+  .Suggestions {
+    width: 98%;
+  }
+}
+
 .child-header-container {
   display: flex;
   flex-direction: column;

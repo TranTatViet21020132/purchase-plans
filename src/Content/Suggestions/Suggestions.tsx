@@ -9,38 +9,38 @@ type Suggestion = {
 }
 
 const Suggestions = () => {
+  const fetchedSuggestions: Suggestion[] = [
+    {
+      code: "PR.2023.0000010",
+      unit: "GGG-NH Gogi Tô Hiệu",
+    },
+    {
+      code: "PR.2023.0000009",
+      unit: "GGG-NH Gogi Nguyễn Chí Thanh",
+    },
+    {
+      code: "PR.2023.0000008",
+      unit: "GGG-NH Sumo Nguyễn Phong Sắc",
+    },
+    {
+      code: "PR.2023.0000008",
+      unit: "GGG-NH Sumo Nguyễn Thị Định",
+    },
+    {
+      code: "PR.2023.0000008",
+      unit: "GGG-Phòng kế hoạch và phát tr...",
+    }
+  ];
+
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
 
   useEffect(() => {
-    const fetchedSuggestions: Suggestion[] = [
-      {
-        code: "PR.2023.0000010",
-        unit: "GGG-NH Gogi Tô Hiệu",
-      },
-      {
-        code: "PR.2023.0000009",
-        unit: "GGG-NH Gogi Nguyễn Chí Thanh",
-      },
-      {
-        code: "PR.2023.0000008",
-        unit: "GGG-NH Sumo Nguyễn Phong Sắc",
-      },
-      {
-        code: "PR.2023.0000008",
-        unit: "GGG-NH Sumo Nguyễn Thị Định",
-      },
-      {
-        code: "PR.2023.0000008",
-        unit: "GGG-Phòng kế hoạch và phát tr...",
-      }
-    ];
-    
     setSuggestions(fetchedSuggestions);
     
     const updateMaxUnitLength = () => {
-      if (window.innerWidth <= 1024) {
-        setMaxUnitLength(19);
+      if (window.innerWidth <= 1024 && 576 < window.innerWidth) {
+        setMaxUnitLength(16);
       } else {
         setMaxUnitLength(Infinity);
       }
@@ -83,7 +83,9 @@ const Suggestions = () => {
           {suggestions.map((item, index) => (
             <tr key={index}>
               <td className='s-col-1 data'>{item.code}</td>
-              <td className='s-col-2 data'>{item.unit.length > maxUnitLength ? item.unit.slice(0, maxUnitLength) + '...' : item.unit}</td>
+              <td className='s-col-2 data'>
+                {item.unit.length > maxUnitLength ? item.unit.slice(0, maxUnitLength) + '...' : item.unit}
+              </td>
               <td className='s-col-3 data'><span className='addfile-icon'><VscNewFile size={14}/></span></td>
             </tr>
           ))}
