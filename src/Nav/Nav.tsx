@@ -75,10 +75,10 @@ const Nav = () => {
               >
                 <span>{getTab(item)}</span>
                 {/* <span>{item} <BsChevronDown size={14}/></span> */}
-                {/* <span
+                <span
                   className="bottom-bar"
                   style={{ left: `${tabUnderlineLeft}px`, width: `${tabUnderlineWidth}px` }}
-                /> */}
+                />
               </li>
             ))}
           </ul>

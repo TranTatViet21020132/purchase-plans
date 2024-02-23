@@ -80,6 +80,10 @@
   color: white;
 }
 
+.table-container {
+  overflow-y: scroll;
+}
+
 .l-col {
   height: 2rem;
 }
