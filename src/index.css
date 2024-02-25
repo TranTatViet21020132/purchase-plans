@@ -1,3 +1,11 @@
+:root {
+  --color-yellow-300: #e8e0d8;
+  --color-yellow: #918b7c;
+
+  --color-hover: #bfbf9c;
+  --card-border-radius: 0.3rem;
+}
+
 h1, h2, h3, h4, h5 {
   font-weight: normal;
   margin: 0;

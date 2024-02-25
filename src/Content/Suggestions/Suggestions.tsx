@@ -3,41 +3,23 @@ import './Suggestions.css';
 import { FiSearch } from "react-icons/fi";
 import { VscNewFile } from "react-icons/vsc";
 
-type Suggestion = {
-  code: string;
-  unit: string;
-}
+import fetchSuggestions from './Data';
+import usePagination from '../../hooks/usePagination';
+import Pagination from "../../Pagination/Pagination";
+
+const resultsPerPage = 5;
 
 const Suggestions = () => {
-  const fetchedSuggestions: Suggestion[] = [
-    {
-      code: "PR.2023.0000010",
-      unit: "GGG-NH Gogi Tô Hiệu",
-    },
-    {
-      code: "PR.2023.0000009",
-      unit: "GGG-NH Gogi Nguyễn Chí Thanh",
-    },
-    {
-      code: "PR.2023.0000008",
-      unit: "GGG-NH Sumo Nguyễn Phong Sắc",
-    },
-    {
-      code: "PR.2023.0000008",
-      unit: "GGG-NH Sumo Nguyễn Thị Định",
-    },
-    {
-      code: "PR.2023.0000008",
-      unit: "GGG-Phòng kế hoạch và phát tr...",
-    }
-  ];
-
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const { currentPage, setCurrentPage, totalPages, currentList, setCurrentList } = usePagination(resultsPerPage, fetchSuggestions);
   const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
 
   useEffect(() => {
-    setSuggestions(fetchedSuggestions);
-    
+    const start = (currentPage - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    setCurrentList(fetchSuggestions.slice(start, end));
+  }, [currentPage, resultsPerPage]);
+
+  useEffect(() => { 
     const updateMaxUnitLength = () => {
       if (window.innerWidth <= 1024 && 576 < window.innerWidth) {
         setMaxUnitLength(16);
@@ -75,12 +57,15 @@ const Suggestions = () => {
       </div>
       <div className="table-container">
         <table>
-          <tr>
-            <th className='s-col-1 head'>Mã ĐNMS</th>
-            <th className='s-col-2 head'>Đơn vị</th>
-            <th className='s-col-3 head'></th>
-          </tr>
-          {suggestions.map((item, index) => (
+          <thead>
+            <tr>
+              <th className='s-col-1 head'>Mã ĐNMS</th>
+              <th className='s-col-2 head'>Đơn vị</th>
+              <th className='s-col-3 head'></th>
+            </tr>
+          </thead>
+          <tbody>
+          {currentList.map((item, index) => (
             <tr key={index}>
               <td className='s-col-1 data'>{item.code}</td>
               <td className='s-col-2 data'>
@@ -88,9 +73,11 @@ const Suggestions = () => {
               </td>
               <td className='s-col-3 data'><span className='addfile-icon'><VscNewFile size={14}/></span></td>
             </tr>
-          ))}
+          ))}             
+          </tbody>
         </table>
       </div>
+      <Pagination currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
     </div>
   );
 }

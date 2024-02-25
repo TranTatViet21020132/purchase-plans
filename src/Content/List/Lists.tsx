@@ -8,95 +8,23 @@ import { IoIosAdd } from "react-icons/io";
 import { TbCircleDotted, TbCircleDashedX } from "react-icons/tb";
 import { FaCircleCheck } from "react-icons/fa6";
 import { BiSolidPieChartAlt } from "react-icons/bi";
+import fetchList from './Data';
+import usePagination from '../../hooks/usePagination';
+import Pagination from "../../Pagination/Pagination";
 
-type List = {
-  code: string;
-  name: string;
-  creator: string;
-  create_date: string;
-  type: string;
-  start_date: string;
-  end_date: string;
-  response: string;
-  status: string;
-}
+const resultsPerPage = 8;
 
 const Lists = () => {
-  const fetchList: List[] = [
-    {
-      code: "SE.2023.0000010",
-      name: "Sự kiện chào giá cá hồi Nauy",
-      creator: "Hoàng Minh Lý",
-      create_date: '06-03-2023',
-      type: "RFQ",
-      start_date: "06-03-2023",
-      end_date: "09-03-2023",
-      response: "0 phản hồi",
-      status: "Mới tạo"
-    },
-    {
-      code: "SE.2023.0000009",
-      name: "Sự kiện đấu thầu lò nướng 2023",
-      creator: "Lê Hồng Minh",
-      create_date: '05-02-2023',
-      type: "RFQ",
-      start_date: "06-03-2023",
-      end_date: "15-03-2023",
-      response: "0 phản hồi",
-      status: "Chờ duyệt"
-    },
-    {
-      code: "SE.2023.0000008",
-      name: "Sự kiện chào giá sản phẩm sữa",
-      creator: "Lê Hồng Minh",
-      create_date: '18-01-2023',
-      type: "RFP",
-      start_date: "20-01-2023",
-      end_date: "26-01-2023",
-      response: "0 phản hồi",
-      status: "Từ chối"
-    },
-    {
-      code: "SE.2023.0000007",
-      name: "Sự kiện ua lò nướng công ng...",
-      creator: "Mai Linh Lan",
-      create_date: '15-01-2023',
-      type: "RFP",
-      start_date: "18-01-2023",
-      end_date: "06-03-2023",
-      response: "0 phản hồi",
-      status: "Đã hủy"
-    },
-    {
-      code: "SE.2023.0000006",
-      name: "Sự kiện marketing",
-      creator: "Mai Linh Lan",
-      create_date: '06-03-2023',
-      type: "RFP",
-      start_date: "06-03-2023",
-      end_date: "06-03-2023",
-      response: "0 phản hồi",
-      status: "Đang diễn ra"
-    },
-    {
-      code: "SE.2023.0000005",
-      name: "Sự kiện chào giá máy móc VP",
-      creator: "Lê Hồng Minh",
-      create_date: '26-01-2023',
-      type: "RFI",
-      start_date: "28-01-2023",
-      end_date: "28-02-2023",
-      response: "1 phản hồi",
-      status: "Hoàn thành PAM"
-    },
-  ];
-
-  const [lists, setLists] = useState<List[]>([]);
+  const { currentPage, setCurrentPage, totalPages, currentList, setCurrentList } = usePagination(resultsPerPage, fetchList);
   const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
 
   useEffect(() => {
-    setLists(fetchList);
-    
+    const start = (currentPage - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    setCurrentList(fetchList.slice(start, end));
+  }, [currentPage, resultsPerPage]);
+
+  useEffect(() => {
     const updateMaxUnitLength = () => {
       if (window.innerWidth <= 1024) {
         setMaxUnitLength(16);
@@ -166,6 +94,7 @@ const Lists = () => {
       </div>
       <div className="table-container">
         <table>
+          <thead>
             <tr>
               <th className='l-col head first'>Mã PAM #</th>
               <th className='l-col head'>Tên PAM</th>
@@ -178,7 +107,9 @@ const Lists = () => {
               <th className='l-col head'>Trạng thái</th>
               <th className='l-col head'></th>
             </tr>
-            {lists.map((item, index) => (
+          </thead>
+          <tbody>
+            {currentList.map((item, index) => (
               <tr key={index}>
                 <td className='l-col data first'>{item.code}</td>
                 <td className='l-col data'>
@@ -194,9 +125,10 @@ const Lists = () => {
                 <td className='l-col data'><BsThreeDotsVertical size={14}/></td>
               </tr>
             ))}
+          </tbody>
         </table>
       </div>
-      
+      <Pagination currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
     </div>
   );
 }
