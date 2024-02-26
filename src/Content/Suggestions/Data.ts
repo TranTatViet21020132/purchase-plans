@@ -43,7 +43,27 @@ type Suggestion = {
     {
       code: "PR.2023.0000003",
       unit: "GGG-Phòng kế hoạch và phát triển",
-    }
+    },
+    {
+      code: "PR.2023.0000008",
+      unit: "GGG-Phòng kế hoạch và phát tr...",
+    },
+    {
+      code: "PR.2023.0000007",
+      unit: "GGG-NH Gogi Tân Phú",
+    },
+    {
+      code: "PR.2023.0000006",
+      unit: "GGG-NH Gogi Quận 7",
+    },
+    {
+      code: "PR.2023.0000005",
+      unit: "GGG-NH Sumo Quận 1",
+    },
+    {
+      code: "PR.2023.0000004",
+      unit: "GGG-NH Sumo Quận 10",
+    },
   ];
 
   export default fetchSuggestions;

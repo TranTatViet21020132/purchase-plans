@@ -407,6 +407,72 @@ type List = {
         response: "1 phản hồi",
         status: "Hoàn thành PAM"
       },
+      {
+        code: "SE.2023.0000010",
+        name: "Sự kiện chào giá cá hồi Nauy",
+        creator: "Hoàng Minh Lý",
+        create_date: '06-03-2023',
+        type: "RFQ",
+        start_date: "06-03-2023",
+        end_date: "09-03-2023",
+        response: "0 phản hồi",
+        status: "Mới tạo"
+      },
+      {
+        code: "SE.2023.0000009",
+        name: "Sự kiện đấu thầu lò nướng 2023",
+        creator: "Lê Hồng Minh",
+        create_date: '05-02-2023',
+        type: "RFQ",
+        start_date: "06-03-2023",
+        end_date: "15-03-2023",
+        response: "0 phản hồi",
+        status: "Chờ duyệt"
+      },
+      {
+        code: "SE.2023.0000008",
+        name: "Sự kiện chào giá sản phẩm sữa",
+        creator: "Lê Hồng Minh",
+        create_date: '18-01-2023',
+        type: "RFP",
+        start_date: "20-01-2023",
+        end_date: "26-01-2023",
+        response: "0 phản hồi",
+        status: "Từ chối"
+      },
+      {
+        code: "SE.2023.0000007",
+        name: "Sự kiện ua lò nướng công ng...",
+        creator: "Mai Linh Lan",
+        create_date: '15-01-2023',
+        type: "RFP",
+        start_date: "18-01-2023",
+        end_date: "06-03-2023",
+        response: "0 phản hồi",
+        status: "Đã hủy"
+      },
+      {
+        code: "SE.2023.0000006",
+        name: "Sự kiện marketing",
+        creator: "Mai Linh Lan",
+        create_date: '06-03-2023',
+        type: "RFP",
+        start_date: "06-03-2023",
+        end_date: "06-03-2023",
+        response: "0 phản hồi",
+        status: "Đang diễn ra"
+      },
+      {
+        code: "SE.2023.0000005",
+        name: "Sự kiện chào giá máy móc VP",
+        creator: "Lê Hồng Minh",
+        create_date: '26-01-2023',
+        type: "RFI",
+        start_date: "28-01-2023",
+        end_date: "28-02-2023",
+        response: "1 phản hồi",
+        status: "Hoàn thành PAM"
+      },
   ];
   
   export default fetchList;

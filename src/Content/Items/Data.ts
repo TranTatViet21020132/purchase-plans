@@ -44,6 +44,18 @@ type Good = {
         name: "Thực phẩm đóng gói",
         quantity: "200.000,00 kg",
       },
+      {
+        name: "Bơ, phô mai",
+        quantity: "20.560,00 kg",
+      },
+      {
+        name: "Thực phẩm khô, gia vị",
+        quantity: "64.203,00 kg",
+      },
+      {
+        name: "Bàn đá, bàn gang",
+        quantity: "10,00 Cái",
+      },
   ];
 
   export default fetchItems;
