@@ -7,10 +7,10 @@ import fetchSuggestions from './Data';
 import usePagination from '../../hooks/usePagination';
 import Pagination from "../../Pagination/Pagination";
 
-const resultsPerPage = 5;
-
 const Suggestions = () => {
-  const { currentPage, setCurrentPage, totalPages, currentList, setCurrentList } = usePagination(resultsPerPage, fetchSuggestions);
+  const { currentPage, totalResults, setCurrentPage, 
+    totalPages, currentList, setCurrentList, resultsPerPage, setResultsPerPage } 
+  = usePagination(fetchSuggestions);
   const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
 
   useEffect(() => {
@@ -77,7 +77,14 @@ const Suggestions = () => {
           </tbody>
         </table>
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
+      <Pagination 
+      currentPage={currentPage} 
+      totalResults={totalResults}
+      totalPages={totalPages} 
+      onChange={setCurrentPage} 
+      resultsPerPage={resultsPerPage}
+      setResultsPerPage={setResultsPerPage}
+      />
     </div>
   );
 }

@@ -14,8 +14,9 @@ type Item = {
   quantity?: string;
 }
 
-const useListPagination = <T extends Item>(resultsPerPage: number, fetchList: T[]) => {
+const useListPagination = <T extends Item>(fetchList: T[]) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [resultsPerPage, setResultsPerPage] = useState<number>(8);
   const totalResults = fetchList.length;
   const totalPages = useMemo(() => Math.ceil(totalResults / resultsPerPage), [totalResults, resultsPerPage]);
   const initialList = useMemo(() => fetchList.slice(0, resultsPerPage), [resultsPerPage]);
@@ -23,10 +24,13 @@ const useListPagination = <T extends Item>(resultsPerPage: number, fetchList: T[
 
   return {
     currentPage,
+    totalResults,
     setCurrentPage,
     totalPages,
     currentList,
     setCurrentList,
+    resultsPerPage,
+    setResultsPerPage
   };
 };
 

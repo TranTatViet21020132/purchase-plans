@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import './Items.css';
 import { FiSearch } from "react-icons/fi";
 
@@ -6,10 +6,10 @@ import fetchSuggestions from './Data';
 import usePagination from '../../hooks/usePagination';
 import Pagination from "../../Pagination/Pagination";
 
-const resultsPerPage = 5;
-
 const Items = () => {
-  const { currentPage, setCurrentPage, totalPages, currentList, setCurrentList } = usePagination(resultsPerPage, fetchSuggestions);
+  const { currentPage, totalResults, setCurrentPage, totalPages, 
+    currentList, setCurrentList, resultsPerPage, setResultsPerPage } 
+  = usePagination(fetchSuggestions);
 
   useEffect(() => {
     const start = (currentPage - 1) * resultsPerPage;
@@ -57,7 +57,14 @@ const Items = () => {
           </tbody>
         </table>
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
+      <Pagination 
+      currentPage={currentPage} 
+      totalResults={totalResults}
+      totalPages={totalPages} 
+      onChange={setCurrentPage} 
+      resultsPerPage={resultsPerPage}
+      setResultsPerPage={setResultsPerPage}
+      />
     </div>
   );
 }

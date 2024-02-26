@@ -12,10 +12,10 @@ import fetchList from './Data';
 import usePagination from '../../hooks/usePagination';
 import Pagination from "../../Pagination/Pagination";
 
-const resultsPerPage = 8;
-
 const Lists = () => {
-  const { currentPage, setCurrentPage, totalPages, currentList, setCurrentList } = usePagination(resultsPerPage, fetchList);
+  const { currentPage, totalResults, setCurrentPage, totalPages, 
+    currentList, setCurrentList, resultsPerPage, setResultsPerPage } 
+  = usePagination(fetchList);
   const [maxUnitLength, setMaxUnitLength] = useState<number>(Infinity);
 
   useEffect(() => {
@@ -128,7 +128,14 @@ const Lists = () => {
           </tbody>
         </table>
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
+      <Pagination 
+      currentPage={currentPage} 
+      totalResults={totalResults}
+      totalPages={totalPages} 
+      onChange={setCurrentPage} 
+      resultsPerPage={resultsPerPage}
+      setResultsPerPage={setResultsPerPage}
+      />
     </div>
   );
 }
